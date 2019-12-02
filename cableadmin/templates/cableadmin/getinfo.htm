@@ -1,0 +1,99 @@
+{%load static%}
+
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body{
+background-image:url("{%static 'cableadmin/images/getinfobg.jpg' %}");
+background-position:fixed;
+}
+.main{
+height:530px;
+width:600px;
+border:2px solid;
+background-color:rgba(0,0,0,0.2);
+position:relative;
+top:50px;
+background-color:
+}
+img{
+height:200px;
+width:200px;
+position:relative;
+top:20px;
+border-radius:100px;
+}
+table{
+position:fixed;
+top:10px;
+left:620px;
+}
+</style>
+</head>
+
+<body>
+
+    <form  method="post">
+      {%csrf_token%}
+
+        <div class="main">
+            <center><img src="{%static 'cableadmin/images/getinfo.jpg'%}"></center><br>
+            <br>
+            <label class="p1"><b>Enter the ID to get Information:</b></label>
+            
+            <input type="text" name="clientidget" value="{{forms.customer_id}}">
+             <br>
+
+             
+              <label class="p2"><b>Client Name:</b></label>
+            <input type="text" name="t1" value="{{forms.customer_name}} "></br>
+            
+            <label class="p3"><b>Client WIFI plan ID:</b></label>
+            <input type="text" name="t2" value="{{forms.wifi_plans}}"></br>
+            
+            <label class="p1"><b>Client Cable plan ID:</b></label>
+            <input type="text" name="t3" value="{{forms.cable_plans}}"></br>
+            <button name="upclientwifi">Update Plan</button><br><br>
+            <a href="{% url 'admindetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/back.png'%}" ></a>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>ClientID</th>
+                    <th>ClientName</th>
+                    <th>ServerID</th>
+                <th>AreaID</th>
+                <th>WIFIID</th>
+                <th>CableID</th>
+                <th>Subscription Cable</th>
+                <th>Subscription Wifi</th>
+                  </tr>
+                </thead>
+              
+               <tbody>
+                  {%for us in users%}
+                  <tr>
+                    <td>{{us.customer_id}}</td>
+                    <td>{{us.customer_name}}</td>
+                    <td>{{us.server_id}}</td>
+                    <td>{{us.area_id}}</td>
+                    <td>{{us.wifi_plans}}</td>
+                    <td>{{us.cable_plans}}</td>
+                    <td>{{us.subscription_cable}}</td>
+                    <td>{{us.subscription_wifi}}</td>
+                  </tr>
+                  {%endfor%}
+                 
+                </tbody>
+            </table>
+  
+      </form>
+
+</body>
+
+</html>

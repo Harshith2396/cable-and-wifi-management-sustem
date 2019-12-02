@@ -1,0 +1,119 @@
+{%load static%}
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+  body{
+    background-color: beige;
+  }
+.main{
+height:500;
+width:600;
+border:2px solid;
+
+}
+img{
+height:200px;
+width:200px;
+position:relative;
+top:20px;
+border-radius:100px;
+}
+table{
+position:fixed;
+top:10px;
+left:620px;
+}
+#t1{
+position:fixed;
+top:300px;
+left:620px;
+}
+
+</style>
+</head>
+<body>
+  <form method="post">
+      {%csrf_token%}
+      <div class="main">
+          <center><img src="{%static 'cableadmin/images/useradd.png'%}"></center><br>
+          <p>HELLO Admin Add users</p>
+          <label class="p1">Please enter the user ID:</label>
+          {{cforms.customer_id}} <br>
+          <label class="p2">The WIFI plan:</label>
+          {{cforms.wifi_plans}} <br>
+          <label class="p3">The cable plan:</label>
+          {{cforms.cable_plans}} <br>
+          <label class="p4">Sever ID:</label>
+          {{cforms.server_id}} <br>
+          <label class="p4">Area ID:</label>
+          {{cforms.area_id}} <br>
+          <label class="p4">customer Name:</label>
+          {{cforms.customer_name}} <br>
+          <label class="p4">Subscription :</label>
+          {{cforms.subscription_cable}} <br>
+          <label class="p4">Subscription :</label>
+          {{cforms.subscription_wifi}} <br>
+          <button name="adduser" class="btn">ADD USER</button>
+          <br>
+          <br>
+          <a href="{% url 'admindetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/back.png'%}" ></a>
+
+            
+          </div>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>CableID</th>
+                  <th>CablePlanName</th>
+                  <th>CablePrice</th>
+              <th>Bandwidth</th>
+          
+                </tr>
+              </thead>
+            
+             <tbody>
+               {%for i in cable%}
+                <tr>
+                  <td>{{i.cable_id}}</td>
+                  <td>{{i.cable_plane_name}}</td>
+                  <td>{{i.cable_price}}</td>
+              <td>{{i.bandwidth}}</td>
+              {%endfor%}
+                </tr>
+               
+              </tbody>
+          </table>
+          
+          <table id="t1" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>WIFIID</th>
+                  <th>WIFIName</th>
+                  <th>WIFIPrice</th>
+              <th>Speed Provided</th>
+          
+                </tr>
+              </thead>
+            
+             <tbody>
+                {%for i in wifi%}
+                <tr>
+                  <td>{{i.wifi_id}}</td>
+                  <td>{{i.wifi_plan_name}}</td>
+                  <td>{{i.wifi_price}}</td>
+              <td>{{i.speed_provided}}</td>
+              {%endfor%}
+                </tr>
+               
+              </tbody>
+          </table>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+{%load static%}
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+.main{
+height:500;
+width:600;
+border:2px solid;
+
+}
+body{
+  background-color: lightblue;
+}
+table{
+position:fixed;
+top:10px;
+left:620px;
+}
+</style>
+</head>
+<body>
+  <form  method="post">
+    {%csrf_token%}
+      <div class="main">
+          <center><img src="{%static 'cableadmin/images/wifiadd2.jpg'%}"></center><br>
+          <label class="p1">Enter the WIFI ID:</label>
+          {{forms.wifi_id}} <br>
+          <label class="p2">Enter the WIFI Plan Name</label>
+          {{forms.wifi_plan_name}} <br>
+          <label class="p3">Price</label>
+          {{forms.wifi_price}} <br>
+          <label class="p4">Speed provided</label>
+          {{forms.speed_provided}} <br>
+           <button name="addwifi" class="btn">Add plan</button><br>
+           <br>
+            <a href="{% url 'admindetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/back.png'%}" ></a>
+          </div>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>WIFIID</th>
+                  <th>WIFIPlanName</th>
+                  <th>WIFIPrice</th>
+              <th>SpeedProvided</th>
+          
+                </tr>
+              </thead>
+            
+             <tbody>
+                {%for us in users%}
+          <tr>
+            <td>{{us.wifi_id}}</td>
+            <td>{{us.wifi_plan_name}}</td>
+            <td>{{us.wifi_price}}</td>
+        <td>{{us.speed_provided}}</td>
+        
+          </tr>
+      {%endfor%}
+              </tbody>
+          </table>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{%load static%}
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body{
+    background:url(" {%static 'cableadmin/images/deleteplan.jpg' %} ");
+    }
+    .main{
+    height:600;
+    width:600;
+    margin: auto;
+    border:2px solid;
+    background-color:rgba(98, 191, 144,0.6);
+    position:relative;
+    top:30px;
+    left:10px;
+    }
+    
+    img{
+    height:250px;
+    width:250px;
+    position:relative;
+    top:40px;
+    border-radius:100px;
+    }
+    .p1{
+    font-size:20px;
+    position:relative;
+    top:100px;
+    }
+    input{
+    position:relative;
+    top:100px;
+    }
+    button{
+    position:relative;
+    top:130px;
+    }
+</style>
+</head>
+<body>
+  <form method="post">
+{%csrf_token%}
+<div class="main">
+
+    <label class="p1">Enter the WIFI ID to delete plan:</label>
+    <input type="text" name="delewifi" ><br>
+    
+     <button name="delwifi" class="btn">Delete</button><br>
+     <br>
+    
+      <br><br><br><br>
+      <a href="{% url 'admindetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/back.png'%}" ></a>
+      
+      <center><img   src="{%static 'cableadmin/images/getinfo.jpg'%}" ></center>
+    </div>
+    <div style="overflow-x: auto;overflow-y: auto;">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>WIFIID</th>
+            <th>WIFIPlanName</th>
+            <th>WIFIPrice</th>
+        <th>SpeedProvided</th>
+    
+          </tr>
+        </thead>
+      
+       <tbody>
+     {%for us in users%}
+          <tr>
+            <td>{{us.wifi_id}}</td>
+            <td>{{us.wifi_plan_name}}</td>
+            <td>{{us.wifi_price}}</td>
+        <td>{{us.speed_provided}}</td>
+        
+          </tr>
+      {%endfor%}
+        </tbody>
+    </table>
+  </div>
+  </form>
+
+</body>
+</html>

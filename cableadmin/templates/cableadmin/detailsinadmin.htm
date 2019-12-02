@@ -1,0 +1,54 @@
+{%load static%}
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body{
+background-color:rgba(0,0,0,0.2);
+}
+.main{
+height:700px;
+width:900px;
+border:2px solid;
+background-image:url("{% static 'cableadmin/images/detailsinadmin.jpg'  %}");
+margin:0 auto;
+position:relative;
+top:50px;
+}
+.p1{
+font-size:55px;
+}
+.p2{
+
+top:100px;
+font-size:35px;
+}
+.btn{
+position:relative;
+top:10px;
+font-size:20px;
+width:400px;
+}
+.btn:hover{
+font-size:30px;
+}
+</style>
+</head>
+<body>
+<div class="main">
+<p class="p1"><b>Hi Admin</b></p></br>
+<p class="p2">What do you want to do today?</p></br>
+<b style="font-size:20px"><a style="color: crimson;" href="{% url 'userdetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/adduser.jpg'%}" >Add User</a> <br><br></b>
+<b style="font-size:20px"><a  style="color: crimson;"  href=" {% url 'userdelete' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/deluser.png'%}" >Delete User</a><br><br></b>
+<b style="font-size:20px"><a  style="color: crimson;"  href="{% url 'getplan' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/plan.jpg'%}" >Add Plan</a><br><br></b>
+<b style="font-size:20px"><a  style="color: crimson;" href="{% url 'deleteplan' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/delete.jpg'%}" ><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/wifi.jpg'%}" >Delete Wifi Plans</a><br><br></b>
+<b style="font-size:20px"><a style="color: crimson;"  href="{% url 'updatearea' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/download.png'%}" >Update</a><br><br>
+</b>
+<b style="font-size:20px"><a  style="color: crimson;"  href="{%url 'logout'%}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/logout.jpg'%}" >Logout</a></b>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{%load static%}
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body{
+background-color:rgba(0,0,0,0.2);
+}
+.main{
+height:500px;
+width:600px;
+border:2px solid;
+background-image:url("{%static 'cableadmin/images/userdelete.jpg' %}");
+background-repeat:no-repeat;
+margin:0 auto;
+position:relative;
+top:50px;
+}
+.p1{
+font-size:25px;
+color:white;
+}
+.btn{
+font-size:20px;
+}
+.btn:hover{
+font-size:30px;
+}
+
+</style>
+</head>
+<body>
+  <form method="POST">
+    {%csrf_token%}
+      <div class="main">
+          <label class="p1">Enter ID of user to be deleted:</label>
+          <input type="text" name="t1"><br>
+          
+           <br>
+            <button name="usedel">Delete User</button>
+            <br> <br>
+          <a href="{% url 'admindetails' %}"><img style="width: 50px;height:50px;" src="{%static 'cableadmin/images/back1.png'%}" ></a>
+          </div><br><br><br>
+          <div style="overflow: auto;">
+              <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>ClientID</th>
+                  <th>ClientName</th>
+                  <th>ServerID</th>
+              <th>AreaID</th>
+              <th>WIFIID</th>
+              <th>CableID</th>
+              <th>Subscription For Cable</th>
+              <th>Subscription For wifi</th>
+              <th>Subscription For wifi</th>
+              <th>Subscription For wifi</th>
+                </tr>
+              </thead>
+            
+             <tbody>
+               {%for us in users%}
+                <tr>
+                  <td>{{us.customer_id}}</td>
+                  <td>{{us.customer_name}}</td>
+                  <td>{{us.server_id}}</td>
+                  <td>{{us.area_id}}</td>
+                  <td>{{us.wifi_plans}}</td>
+                  <td>{{us.cable_plans}}</td>
+                  <td>{{us.subscription_cable}}</td>
+                  <td>{{us.subscription_wifi}}</td>
+                </tr>
+                {%endfor%}
+               
+              </tbody>
+          </table>
+        </div>
+  </form>
+
+</body>
+</html>

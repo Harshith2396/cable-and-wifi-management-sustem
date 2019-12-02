@@ -1,0 +1,133 @@
+{%load static%}
+
+<html>
+    <head>
+
+        <style>
+        body{
+            background-image: url("{%static 'cableadmin/images/bg7.jpg' %}");
+            background-size: cover;
+        }
+        label{
+          font-size: 20px;
+          color: red;
+          
+        }
+        </style>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <form method="POST">
+            {%csrf_token%}
+            <center><b style="font-size: 36px;">WELCOME USER {{user.customer_id}}   {{user.customer_name}}</b></center>
+            
+                
+                
+                <input type="hidden" name="catalog" value="{{user.customer_id}}">
+                <table class="table table-bordered table-dark">
+                        <thead>
+                          <tr>
+                            <th>WIFIID</th>
+                            <th>WIFIPlanName</th>
+                            <th>WIFIPrice</th>
+                        <th>SpeedProvided</th>
+                    
+                          </tr>
+                        </thead>
+                      
+                       <tbody>
+                          {%for us in wifi%}
+                    <tr>
+                      <td>{{us.wifi_id}}</td>
+                      <td>{{us.wifi_plan_name}}</td>
+                      <td>{{us.wifi_price}}</td>
+                  <td>{{us.speed_provided}}</td>
+                  
+                    </tr>
+                {%endfor%}
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered table-dark">
+                            <thead>
+                              <tr>
+                                <th>CableID</th>
+                                <th>CablePlanName</th>
+                                <th>CablePrice</th>
+                            <th>Bandwidth</th>
+                        
+                              </tr>
+                            </thead>
+                          
+                           <tbody>
+                             {%for i in cable%}
+                              <tr>
+                                <td>{{i.cable_id}}</td>
+                                <td>{{i.cable_plane_name}}</td>
+                                <td>{{i.cable_price}}</td>
+                            <td>{{i.bandwidth}}</td>
+                            {%endfor%}
+                              </tr>
+                             
+                            </tbody>
+                        </table>
+                        <b><label for="">Select desired wifi plan</label></b> 
+                        <select name="selectwifi">
+                                {%for i in wifi %}
+                                <option value="{{i.wifi_id}}">{{i.wifi_id}}</option>
+                                {%endfor%}
+                            </select>
+                            <b><label for="">Select desired Subscription duartion</label></b>
+                            
+                            <select name="selectmonthw">
+                        
+                                    <option value=" 1 MONTH">1 MONTH</option>
+                                    <option value=" 2 MONTHS">2 MONTHS</option>
+                                    <option value=" 3 MONTHS">3 MONTHS</option>
+                                    <option value=" 4 MONTHS">4 MONTHS</option>
+                                    <option value=" 5 MONTHS">5 MONTHS</option>
+                                    <option value=" 6 MONTHS">6 MONTHS</option>
+                                    <option value=" 7 MONTHS">7 MONTHS</option>
+                                    <option value=" 8 MONTHS">8 MONTHS</option>
+                                    <option value=" 9 MONTHS">9 MONTHS</option>
+                                    <option value=" 10 MONTHS">10 MONTHS</option>
+                                    <option value=" 11 MONTHS">11 MONTHS</option>
+                                    <option value=" 12 MONTHS">12 MONTHS</option>
+                                </select><br>
+                                
+                                <button name="wifisub">Update Plan</button><br>
+                                <b><label for="">Select desired cable plan</label></b>
+                
+                <select name="selectcable">
+                    {%for i in cable %}
+                    <option value="{{i.cable_id}}">{{i.cable_id}}</option>
+                    {%endfor%}
+                </select>
+                <b><label for="">Select desired Subscription duartion</label>
+                </b>
+                
+                <select name="selectmonthc">
+                        <option value=" 1 MONTH">1 MONTH</option>
+                        <option value=" 2 MONTHS">2 MONTHS</option>
+                        <option value=" 3 MONTHS">3 MONTHS</option>
+                        <option value=" 4 MONTHS">4 MONTHS</option>
+                        <option value=" 5 MONTHS">5 MONTHS</option>
+                        <option value=" 6 MONTHS">6 MONTHS</option>
+                        <option value=" 7 MONTHS">7 MONTHS</option>
+                        <option value=" 8 MONTHS">8 MONTHS</option>
+                        <option value=" 9 MONTHS">9 MONTHS</option>
+                        <option value=" 10 MONTHS">10 MONTHS</option>
+                        <option value=" 11 MONTHS">11 MONTHS</option>
+                        <option value=" 12 MONTHS">12 MONTHS</option>
+                    </select><br>
+
+                    <button name="cabsub">Update Plan</button>
+        </form>
+        
+    </body>
+</html>

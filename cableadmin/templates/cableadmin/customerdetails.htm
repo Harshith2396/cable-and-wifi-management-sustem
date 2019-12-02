@@ -1,0 +1,60 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+          background-image: url("{%static 'cableadmin/images/custd.jpg' %}");
+        background-size: cover;
+        
+        }
+        .p1{
+          height:100%;
+         width:600px;
+         border:2px solid black;
+         margin:0 auto;
+         
+         position:relative;
+         top:50px;
+        }
+        label{
+          font-size:26px;
+            }
+        img{
+          height: 100px;
+          width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="p1">
+   <label for=""> <b>Customer ID: {{user.customer_id}}</b></label><br>
+    
+    <label for=""><b>Customer name: {{user.customer_name}}</b></label><br>
+   <label for=""><b>Area code: {{user.area_id}}</b></label><br>
+    <label for=""><b>Collector ID: {{user.collector_id}}</b></label><br>
+   <label for=""><b>Password: {{user.password}}</b></label><br>
+   <center><label for=""><b>Subscriptions</b></label> </center>
+   <br>
+   <label for=""><b>Subscription For Cable: {{user.subscription_cable}}</b></label><br>
+   <br>
+   
+   <label for=""><b>Subscription Name:{{j}} </b></label><br>
+   <br>
+   <label for=""><b>Subscription for Wifi: {{user.subscription_wifi}}</b></label><br>
+   <br>
+   <label for=""><b>Subscription Name:{{w.wifi_plan_name}}  </b></label><br>
+   <br>
+   <label for=""><b>Wifi Speed:{{w.speed_provided}}</b></label>
+   <br>
+   <center><a href="{%url 'useroptions' %}"><img src="{%static 'cableadmin/images/back1.png'%}" ></a></center>   
+</div>
+
+
+</body>
+</html>
